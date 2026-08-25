@@ -38,6 +38,7 @@ public class Player : MonoBehaviour
             case State.NoMove:
                 break;
         }
+        IconRotations();
     }
 
     private void Movement()
@@ -88,6 +89,36 @@ public class Player : MonoBehaviour
             inspectIcon.transform.localScale = new Vector3(-1, 1, 1);
             //talkIcon.transform.localScale = new Vector3(-1, 1, 1);
             goIcon.transform.localScale = new Vector3(-1, 1, 1);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Inspect" && state != State.NoMove)
+        {
+            inspectIcon.enabled = true;
+
+            if (collision.gameObject.GetComponent<InteractableObject>().checker == false)
+            {
+                inspectIcon.color = Color.white;
+            }
+            else
+            {
+                inspectIcon.color = Color.gray;
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Inspect")
+        {
+            inspectIcon.enabled = false;
+        }
+
+        if (collision.gameObject.tag == "Door")
+        {
+            goIcon.enabled = false;
         }
     }
 }
