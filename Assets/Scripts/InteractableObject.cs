@@ -26,7 +26,7 @@ public class InteractableObject : MonoBehaviour
     {
         if (boxCollider.IsTouching(player.boxCollider))
         {
-            if (Input.GetKeyDown(KeyCode.Space) && interactable == true)
+            if (Input.GetKeyDown(KeyCode.Space) && interactable == true && player.state != Player.State.NoMove)
             {
                 interactable = false;
                 player.inspectIcon.enabled = false;

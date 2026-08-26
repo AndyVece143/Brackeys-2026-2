@@ -1,9 +1,10 @@
 using UnityEngine;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
     public float speed;
-    private Rigidbody2D body;
+    public Rigidbody2D body;
     public BoxCollider2D boxCollider;
     public Animator anim;
     public enum State
@@ -98,15 +99,57 @@ public class Player : MonoBehaviour
         {
             inspectIcon.enabled = true;
 
-            if (collision.gameObject.GetComponent<InteractableObject>().checker == false)
+            if (collision.gameObject.GetComponent("InteractableObject") as InteractableObject != null)
             {
-                inspectIcon.color = Color.white;
+                if (collision.gameObject.GetComponent<InteractableObject>().checker == false)
+                {
+                    inspectIcon.color = Color.white;
+                }
+                else
+                {
+                    inspectIcon.color = Color.gray;
+                }
             }
-            else
+
+            if (collision.gameObject.GetComponent("LockedDoor") as LockedDoor != null)
             {
-                inspectIcon.color = Color.gray;
+                if (collision.gameObject.GetComponent<LockedDoor>().checker == false)
+                {
+                    inspectIcon.color = Color.white;
+                }
+                else
+                {
+                    inspectIcon.color = Color.gray;
+                }
             }
+
         }
+    }
+
+    public IEnumerator GoToPlace(Vector2 location, float duration)
+    {
+        float time = 0;
+        Vector2 startingPos = transform.position;
+
+        anim.SetBool("move", true);
+        while (time < duration)
+        {
+            //time += Time.deltaTime;
+            //float t = 1.0f - Mathf.Exp(-dampSpeed * Time.deltaTime);
+            //transform.position = Vector2.Lerp(transform.position, location, t);
+            //yield return null;
+
+            float t = time / duration;
+            transform.position = Vector2.Lerp(startingPos, location, t);
+            time += Time.deltaTime;
+            anim.SetBool("move", true);
+            yield return null;
+        }
+
+        transform.position = location;
+
+        body.linearVelocity = new Vector2(0, 0);
+        anim.SetBool("move", false);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
