@@ -10,6 +10,7 @@ public class CameraController : MonoBehaviour
     public enum State
     {
         FollowPlayer,
+        Room1,
         StayStill
     }
     public State state;
@@ -28,6 +29,9 @@ public class CameraController : MonoBehaviour
             case State.FollowPlayer:
                 FollowPlayer();
                 break;
+            case State.Room1:
+                Room1();
+                break;
             case State.StayStill:
                 break;
         }
@@ -45,6 +49,23 @@ public class CameraController : MonoBehaviour
         if (targetPosition.x > 12f)
         {
             targetPosition.x = 12f;
+        }
+
+        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+    }
+
+    private void Room1()
+    {
+        Vector3 targetPosition = player.position + offset;
+        targetPosition.y = 0;
+
+        if (targetPosition.x < 0f)
+        {
+            targetPosition.x = 0f;
+        }
+        if (targetPosition.x > 28f)
+        {
+            targetPosition.x = 28f;
         }
 
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);

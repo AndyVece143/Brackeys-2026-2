@@ -16,6 +16,7 @@ public class PrologueManager : MonoBehaviour
     public TextMeshProUGUI ominousText;
     private Color fullColor;
     private Color emptyColor;
+    public LevelLoader loader;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -67,6 +68,9 @@ public class PrologueManager : MonoBehaviour
             ominousText.color = Color.Lerp(ominousText.color, emptyColor, time / 2);
             yield return null;
         }
+
+        yield return new WaitForSeconds(1);
+        loader.LoadNextLevel("Room1");
     }
 
     private IEnumerator Cutscene()
