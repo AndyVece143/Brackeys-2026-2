@@ -61,6 +61,7 @@ public class StickyNote : MonoBehaviour
 
     IEnumerator TypeLine()
     {
+        int i = 4;
         string originalText = text;
         string displayedText = "";
         int alphaIndex = 0;
@@ -71,6 +72,14 @@ public class StickyNote : MonoBehaviour
             textComponent.text = originalText;
             displayedText = textComponent.text.Insert(alphaIndex, HTML_ALPHA);
             textComponent.text = displayedText;
+
+            i++;
+            if (i == 5)
+            {
+                SoundManager.instance.PlaySound(audioClip);
+                i = 0;
+            }
+
             yield return new WaitForSeconds(textSpeed);
         }
 

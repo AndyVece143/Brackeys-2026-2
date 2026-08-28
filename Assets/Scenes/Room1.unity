@@ -621,7 +621,7 @@ MonoBehaviour:
   boxCollider: {fileID: 221625221}
   mainCamera: {fileID: 0}
   loader: {fileID: 860732101}
-  sceneName: Prologue
+  sceneName: Room2
 --- !u!212 &221625223
 SpriteRenderer:
   serializedVersion: 2

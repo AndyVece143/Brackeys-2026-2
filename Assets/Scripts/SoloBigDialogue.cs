@@ -174,7 +174,7 @@ public class SoloBigDialogue : MonoBehaviour
         if (canPlayerMove)
         {
             player.StartMoving();
-            mainCamera.state = CameraController.State.FollowPlayer;
+            mainCamera.state = mainCamera.initialState;
         }
 
         if (room1)
