@@ -13,6 +13,7 @@ public class Room1Manager : MonoBehaviour
     public SpriteRenderer ghostSprite;
     private Color fullColor;
     private Color emptyColor;
+    public int puzzleProgress = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

@@ -1,18 +1,15 @@
 using UnityEngine;
 
-public class InteractableObject : MonoBehaviour
+public class UnlockableDoor : MonoBehaviour
 {
     public Player player;
-    public string[] dialogue1;
-    public string[] dialogue2;
+    public string[] lockedDoor;
     public InspectBox inspectBox;
 
     public BoxCollider2D boxCollider;
-    public int react;
     public CameraController mainCamera;
-    public bool checker = false;
-    private int progress = 0;
-
+    public LevelLoader loader;
+    public string sceneName;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -28,26 +25,22 @@ public class InteractableObject : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space) && player.state != Player.State.NoMove)
             {
-                player.inspectIcon.enabled = false;
+                player.goIcon.enabled = false;
                 mainCamera.state = CameraController.State.StayStill;
-                player.StopMoving(react);
-                InspectBox newInspectBox = Instantiate(inspectBox);
+                player.StopMoving(1);
 
-                if (progress == 0)
+
+                if (player.escapeBool == false)
                 {
-                    newInspectBox.lines = dialogue1;
-                    progress++;
-                    if (dialogue2 == null)
-                    {
-                        checker = true;
-                    }
+                    InspectBox newInspectBox = Instantiate(inspectBox);
+                    newInspectBox.lines = lockedDoor;
                 }
 
-                else if (progress == 1 && dialogue2 != null)
+                else
                 {
-                    newInspectBox.lines = dialogue2;
-                    checker = true;
+                    loader.LoadNextLevel(sceneName);
                 }
+
             }
         }
     }

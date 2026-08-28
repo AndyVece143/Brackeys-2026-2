@@ -1,17 +1,17 @@
 using UnityEngine;
 
-public class InteractableObject : MonoBehaviour
+public class PuzzlePlant : MonoBehaviour
 {
     public Player player;
-    public string[] dialogue1;
-    public string[] dialogue2;
+    public string[] lookAtPlant;
+    public string[] waterPlant;
+    public string[] plantDone;
     public InspectBox inspectBox;
 
     public BoxCollider2D boxCollider;
-    public int react;
     public CameraController mainCamera;
     public bool checker = false;
-    private int progress = 0;
+    public Room1Manager manager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,23 +30,23 @@ public class InteractableObject : MonoBehaviour
             {
                 player.inspectIcon.enabled = false;
                 mainCamera.state = CameraController.State.StayStill;
-                player.StopMoving(react);
+                player.StopMoving(1);
                 InspectBox newInspectBox = Instantiate(inspectBox);
 
-                if (progress == 0)
+                if (manager.puzzleProgress < 4)
                 {
-                    newInspectBox.lines = dialogue1;
-                    progress++;
-                    if (dialogue2 == null)
-                    {
-                        checker = true;
-                    }
+                    newInspectBox.lines = lookAtPlant;
                 }
-
-                else if (progress == 1 && dialogue2 != null)
+                else if (manager.puzzleProgress == 4)
                 {
-                    newInspectBox.lines = dialogue2;
+                    newInspectBox.lines = waterPlant;
+                    manager.puzzleProgress++;
+                    player.escapeBool = true;
                     checker = true;
+                }
+                else
+                {
+                    newInspectBox.lines = plantDone;
                 }
             }
         }

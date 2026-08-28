@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
 
     public SpriteRenderer inspectIcon;
     public SpriteRenderer goIcon;
+    public bool escapeBool = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -123,6 +124,67 @@ public class Player : MonoBehaviour
                 }
             }
 
+            if (collision.gameObject.GetComponent("PuzzleChair") as PuzzleChair != null)
+            {
+                if (collision.gameObject.GetComponent<PuzzleChair>().checker == false)
+                {
+                    inspectIcon.color = Color.white;
+                }
+                else
+                {
+                    inspectIcon.color = Color.gray;
+                }
+            }
+            if (collision.gameObject.GetComponent("PuzzleBookshelf") as PuzzleBookshelf != null)
+            {
+                if (collision.gameObject.GetComponent<PuzzleBookshelf>().checker == false)
+                {
+                    inspectIcon.color = Color.white;
+                }
+                else
+                {
+                    inspectIcon.color = Color.gray;
+                }
+            }
+            if (collision.gameObject.GetComponent("PuzzleTrash") as PuzzleTrash != null)
+            {
+                if (collision.gameObject.GetComponent<PuzzleTrash>().checker == false)
+                {
+                    inspectIcon.color = Color.white;
+                }
+                else
+                {
+                    inspectIcon.color = Color.gray;
+                }
+            }
+
+            if (collision.gameObject.GetComponent("PuzzleBlood") as PuzzleBlood != null)
+            {
+                if (collision.gameObject.GetComponent<PuzzleBlood>().checker == false)
+                {
+                    inspectIcon.color = Color.white;
+                }
+                else
+                {
+                    inspectIcon.color = Color.gray;
+                }
+            }
+            if (collision.gameObject.GetComponent("PuzzlePlant") as PuzzlePlant != null)
+            {
+                if (collision.gameObject.GetComponent<PuzzlePlant>().checker == false)
+                {
+                    inspectIcon.color = Color.white;
+                }
+                else
+                {
+                    inspectIcon.color = Color.gray;
+                }
+            }
+        }
+
+        if (collision.gameObject.tag == "Door" && state != State.NoMove)
+        {
+            goIcon.enabled = true;
         }
     }
 
