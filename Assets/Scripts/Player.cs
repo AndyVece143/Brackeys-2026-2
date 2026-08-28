@@ -180,6 +180,17 @@ public class Player : MonoBehaviour
                     inspectIcon.color = Color.gray;
                 }
             }
+            if (collision.gameObject.GetComponent("ReadableNote") as ReadableNote != null)
+            {
+                if (collision.gameObject.GetComponent<ReadableNote>().checker == false)
+                {
+                    inspectIcon.color = Color.white;
+                }
+                else
+                {
+                    inspectIcon.color = Color.gray;
+                }
+            }
         }
 
         if (collision.gameObject.tag == "Door" && state != State.NoMove)
