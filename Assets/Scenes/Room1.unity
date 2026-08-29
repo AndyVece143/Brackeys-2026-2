@@ -760,6 +760,7 @@ MonoBehaviour:
   react: 1
   mainCamera: {fileID: 0}
   checker: 0
+  death: 0
 --- !u!61 &257033299
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1356,7 +1357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 0.740566, g: 0, b: 0, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4869,6 +4870,9 @@ MonoBehaviour:
   boxCollider: {fileID: 1904847488}
   spriteRenderer: {fileID: 1904847487}
   jumpscare: {fileID: 8300000, guid: b7ad10f2307cbcf4db745060c9df3fc4, type: 3}
+  comingFromLeft: 1
+  globalLight: {fileID: 0}
+  lightColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!212 &1904847487
 SpriteRenderer:
   serializedVersion: 2
@@ -5309,7 +5313,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

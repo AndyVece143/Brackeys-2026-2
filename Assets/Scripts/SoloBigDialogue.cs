@@ -32,6 +32,7 @@ public class SoloBigDialogue : MonoBehaviour
     public bool canPlayerMove;
     public bool room1;
     public bool room2;
+    public bool room3;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -187,6 +188,12 @@ public class SoloBigDialogue : MonoBehaviour
         if (room2)
         {
             Room2Manager manager = Room2Manager.FindAnyObjectByType<Room2Manager>();
+            manager.StartCutscene();
+        }
+
+        if (room3)
+        {
+            Room3Manager manager = Room3Manager.FindAnyObjectByType<Room3Manager>();
             manager.StartCutscene();
         }
 

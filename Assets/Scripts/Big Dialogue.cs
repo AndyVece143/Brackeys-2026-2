@@ -41,8 +41,10 @@ public class BigDialogue : MonoBehaviour
     public bool ready = false;
     public float dampSpeed;
     public Player player;
+    public bool canPlayerMove;
     public bool room1;
     public bool room2;
+    public bool room3;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -288,6 +290,11 @@ public class BigDialogue : MonoBehaviour
         //    player.StartMoving();
         //    mainCamera.state = CameraController.State.FollowPlayer;
         //}
+        if (canPlayerMove)
+        {
+            player.StartMoving();
+            mainCamera.state = mainCamera.initialState;
+        }
         if (room1)
         {
             Room1Manager manager = Room1Manager.FindAnyObjectByType<Room1Manager>();
@@ -296,6 +303,12 @@ public class BigDialogue : MonoBehaviour
         if (room2)
         {
             Room2Manager manager = Room2Manager.FindAnyObjectByType<Room2Manager>();
+            manager.StartCutscene();
+        }
+
+        if (room3)
+        {
+            Room3Manager manager = Room3Manager.FindAnyObjectByType<Room3Manager>();
             manager.StartCutscene();
         }
 
