@@ -12,6 +12,7 @@ public class InteractableObject : MonoBehaviour
     public CameraController mainCamera;
     public bool checker = false;
     private int progress = 0;
+    public bool death;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,7 +27,7 @@ public class InteractableObject : MonoBehaviour
     {
         if (boxCollider.IsTouching(player.boxCollider))
         {
-            if (Input.GetKeyDown(KeyCode.Space) && player.state != Player.State.NoMove)
+            if (Input.GetKeyDown(KeyCode.Space) && player.state != Player.State.NoMove && player.canInteract == true)
             {
                 player.inspectIcon.enabled = false;
                 mainCamera.state = CameraController.State.StayStill;
@@ -36,6 +37,10 @@ public class InteractableObject : MonoBehaviour
                 if (progress == 0)
                 {
                     newInspectBox.lines = dialogue1;
+                    if (death == true)
+                    {
+                        newInspectBox.kill = true;
+                    }
                     progress++;
                     if (dialogue2 == null)
                     {
@@ -47,6 +52,7 @@ public class InteractableObject : MonoBehaviour
                 {
                     newInspectBox.lines = dialogue2;
                     checker = true;
+
                 }
             }
         }

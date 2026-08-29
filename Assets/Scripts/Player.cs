@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     public SpriteRenderer inspectIcon;
     public SpriteRenderer goIcon;
     public bool escapeBool = false;
+    public bool canInteract = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -183,6 +184,18 @@ public class Player : MonoBehaviour
             if (collision.gameObject.GetComponent("ReadableNote") as ReadableNote != null)
             {
                 if (collision.gameObject.GetComponent<ReadableNote>().checker == false)
+                {
+                    inspectIcon.color = Color.white;
+                }
+                else
+                {
+                    inspectIcon.color = Color.gray;
+                }
+            }
+
+            if (collision.gameObject.GetComponent("Laptop") as Laptop != null)
+            {
+                if (collision.gameObject.GetComponent<Laptop>().checker == false)
                 {
                     inspectIcon.color = Color.white;
                 }

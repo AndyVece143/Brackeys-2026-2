@@ -20,6 +20,7 @@ public class InspectBox : MonoBehaviour
     public bool ready = false;
     public CameraController mainCamera;
     public float dampSpeed;
+    public bool kill;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -126,14 +127,25 @@ public class InspectBox : MonoBehaviour
 
     IEnumerator MoveSpriteEnd()
     {
-        float time = 0;
-        while (time < duration)
+        if (kill != true)
         {
-            time += Time.deltaTime;
-            float t = 1.0f - Mathf.Exp(-dampSpeed * Time.deltaTime);
-            textBox.transform.position = Vector3.Lerp(textBox.transform.position, textBoxEndPosition, t);
-            yield return null;
+            float time = 0;
+            while (time < duration)
+            {
+                time += Time.deltaTime;
+                float t = 1.0f - Mathf.Exp(-dampSpeed * Time.deltaTime);
+                textBox.transform.position = Vector3.Lerp(textBox.transform.position, textBoxEndPosition, t);
+                yield return null;
+            }
         }
+
+        else
+        {
+            DeathGhost ghost = DeathGhost.FindAnyObjectByType<DeathGhost>();
+            ghost.SwitchToJumpscare();
+            player.canInteract = false;
+        }
+
         //if (interactableObject)
         //{
         //    interactableObject.interactable = true;
