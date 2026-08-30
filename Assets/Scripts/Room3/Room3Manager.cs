@@ -13,6 +13,7 @@ public class Room3Manager : MonoBehaviour
     public SpriteRenderer ghostSprite;
     private Color fullColor;
     private Color emptyColor;
+    public AudioSource source;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,6 +25,7 @@ public class Room3Manager : MonoBehaviour
         switch (StaticData.room3CutsceneWatch)
         {
             case true:
+                source.Play();
                 break;
             case false:
                 StaticData.room3CutsceneWatch = true;
@@ -53,6 +55,9 @@ public class Room3Manager : MonoBehaviour
             case 2:
                 StartCoroutine(Cutscene3());
                 progress++;
+                break;
+            case 3:
+                source.Play();
                 break;
         }
     }

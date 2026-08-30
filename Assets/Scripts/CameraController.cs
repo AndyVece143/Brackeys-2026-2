@@ -13,6 +13,7 @@ public class CameraController : MonoBehaviour
         Room1,
         Room2,
         Room3,
+        Room4,
         StayStill
     }
     public State state;
@@ -39,6 +40,9 @@ public class CameraController : MonoBehaviour
                 break;
             case State.Room3:
                 Room3();
+                break;
+            case State.Room4:
+                Room4();
                 break;
             case State.StayStill:
                 break;
@@ -109,6 +113,32 @@ public class CameraController : MonoBehaviour
         if (targetPosition.x > 28.5f)
         {
             targetPosition.x = 28.5f;
+        }
+
+        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+    }
+
+    private void Room4()
+    {
+        Vector3 targetPosition = player.position + offset;
+        if (targetPosition.x < 0f)
+        {
+            targetPosition.x = 0f;
+        }
+
+        if (targetPosition.x > 82)
+        {
+            targetPosition.x = 82;
+        }
+
+        if (targetPosition.y < 0)
+        {
+            targetPosition.y = 0;
+        }
+
+        if (targetPosition.y > 13.15f)
+        {
+            targetPosition.y = 13.15f;
         }
 
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);

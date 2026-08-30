@@ -204,6 +204,18 @@ public class Player : MonoBehaviour
                     inspectIcon.color = Color.gray;
                 }
             }
+
+            if (collision.gameObject.GetComponent("Developer") as Developer != null)
+            {
+                if (collision.gameObject.GetComponent<Developer>().checker == false)
+                {
+                    inspectIcon.color = Color.white;
+                }
+                else
+                {
+                    inspectIcon.color = Color.gray;
+                }
+            }
         }
 
         if (collision.gameObject.tag == "Door" && state != State.NoMove)

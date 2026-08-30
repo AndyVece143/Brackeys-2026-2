@@ -21,6 +21,7 @@ public class PrankGhost : MonoBehaviour
     public Color ogColor;
     public BigDialogue dialogue;
     public CameraController mainCamera;
+    public AudioSource source;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -79,6 +80,7 @@ public class PrankGhost : MonoBehaviour
         {
             globalLight.color = redColor;
         }
+        source.Stop();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

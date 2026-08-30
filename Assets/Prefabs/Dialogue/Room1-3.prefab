@@ -527,7 +527,11 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   player: {fileID: 0}
   canPlayerMove: 1
-  room1: 0
+  room1: 1
+  room2: 0
+  room3: 0
+  room4: 0
+  epilogue: 0
 --- !u!1 &8269533232315797655
 GameObject:
   m_ObjectHideFlags: 0

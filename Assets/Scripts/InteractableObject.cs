@@ -41,10 +41,15 @@ public class InteractableObject : MonoBehaviour
                     {
                         newInspectBox.kill = true;
                     }
-                    progress++;
+  
                     if (dialogue2 == null)
                     {
                         checker = true;
+                        Debug.Log("He");
+                    }
+                    else
+                    {
+                        progress++;
                     }
                 }
 

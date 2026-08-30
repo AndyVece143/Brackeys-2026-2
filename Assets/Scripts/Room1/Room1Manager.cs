@@ -14,6 +14,7 @@ public class Room1Manager : MonoBehaviour
     private Color fullColor;
     private Color emptyColor;
     public int puzzleProgress = 0;
+    public AudioSource source;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,6 +30,7 @@ public class Room1Manager : MonoBehaviour
                 StartCutscene();
                 break;
             case true:
+                source.Play();
                 break;
         }
     }
@@ -54,6 +56,9 @@ public class Room1Manager : MonoBehaviour
             case 2:
                 StartCoroutine(Cutscene3());
                 progress++;
+                break;
+            case 3:
+                source.Play();
                 break;
         }
     }

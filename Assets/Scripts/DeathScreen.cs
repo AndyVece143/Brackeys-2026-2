@@ -21,6 +21,11 @@ public class DeathScreen : MonoBehaviour
         loader.LoadNextLevel(currentScene);
     }
 
+    public void GiveUp()
+    {
+        loader.LoadNextLevel("Title");
+    }
+
     private IEnumerator GoreNoise()
     {
         yield return new WaitForSeconds(duration);

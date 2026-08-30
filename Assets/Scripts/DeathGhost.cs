@@ -21,6 +21,7 @@ public class DeathGhost : MonoBehaviour
     public bool comingFromLeft;
     public Light2D globalLight;
     public Color lightColor;
+    public AudioSource source;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -110,6 +111,7 @@ public class DeathGhost : MonoBehaviour
 
     public void SwitchToJumpscare()
     {
+        source.Stop();
         SoundManager.instance.PlaySound(jumpscare);
         state = State.Jumpscare;
         spriteRenderer.enabled = true;

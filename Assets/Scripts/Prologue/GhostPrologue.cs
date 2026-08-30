@@ -17,6 +17,7 @@ public class GhostPrologue : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public AudioClip jumpscare;
     public PrologueManager manager;
+    public AudioSource source;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -35,7 +36,6 @@ public class GhostPrologue : MonoBehaviour
             case State.Jumpscare:
                 JumpscareMovement(); 
                 break;
-                 
         }
     }
 
@@ -72,6 +72,7 @@ public class GhostPrologue : MonoBehaviour
         SoundManager.instance.PlaySound(jumpscare);
         state = State.Jumpscare;
         spriteRenderer.enabled = true;
+        source.Stop();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

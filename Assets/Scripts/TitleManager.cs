@@ -18,6 +18,10 @@ public class TitleManager : MonoBehaviour
     {
         Debug.Log(mainTitle.transform.position);
         Debug.Log(credits.transform.position);
+        StaticData.room1CutsceneWatch = false;
+        StaticData.room2CutsceneWatch = false;
+        StaticData.room3CutsceneWatch = false;
+        StaticData.room4CutsceneWatch = false;
     }
 
     // Update is called once per frame
