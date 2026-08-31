@@ -108,13 +108,13 @@ public class LaptopUI : MonoBehaviour
     {
         if (correctAnswer != true)
         {
-            if (nameField.text == "Lilith")
+            if (nameField.text == "Lilith" || nameField.text == "lilith")
             {
-                if (colorField.text == "Pink")
+                if (colorField.text == "Pink" || colorField.text == "pink")
                 {
-                    if (animalField.text == "Rabbit" || animalField.text == "Rabbits")
+                    if (animalField.text == "Rabbit" || animalField.text == "Rabbits" || animalField.text == "rabbit" || animalField.text == "rabbits")
                     {
-                        if (bedField.text == "Bedsheet" || bedField.text == "Bedsheets")
+                        if (bedField.text == "Bedsheet" || bedField.text == "Bedsheets" || bedField.text == "bedsheet" || bedField.text == "bedsheets" || bedField.text == "Sheet" || bedField.text == "sheet" || bedField.text == "Sheets" || bedField.text == "sheets")
                         {
                             correctAnswer = true;
                             StartCoroutine(TextBoxMove());

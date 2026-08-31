@@ -1177,7 +1177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ReadableNote
   player: {fileID: 0}
   text: "I couldn't find any way to proceed in here. Going through the books will
-    take too long. I'm gonna check out what's down this hallway.\n          -E.E."
+    take too long. I'm gonna check out what's down this hallway.\n          -E.F."
   note: {fileID: 8948689019742103056, guid: 6646bb51877bb55428cbe54ef6202609, type: 3}
   boxCollider: {fileID: 416199813}
   mainCamera: {fileID: 0}
