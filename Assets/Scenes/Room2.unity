@@ -1149,8 +1149,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ReadableNote
   player: {fileID: 0}
-  text: "I ransacked her drawer and found her heart covered diary hidden under her
-    clothes. I'm positive there are clues written down in there!\n          -C.W."
+  text: "I found the ghost's heart covered diary and put it on that table over there.
+    I'm positive there are clues written down in there!\n          -C.W."
   note: {fileID: 8948689019742103056, guid: 6646bb51877bb55428cbe54ef6202609, type: 3}
   boxCollider: {fileID: 416199813}
   mainCamera: {fileID: 0}
